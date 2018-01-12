@@ -60,7 +60,7 @@ export default class Example extends Component {
 | Name | Type | Description | Default |
 | ---- | :---: | --- | --- |
 | ```closeInterval``` | Number  | dismiss alert at a certain time in milliseconds | 4000
-| ```imageSrc``` | Object  | { info: require('./assets/info.png'),warn: require('./assets/warn.png'),error: require('./assets/error.png'),success: require('./assets/success.png')} | null
+| ```imageSrc``` | Object  | Object with keys alert type | { info: require('./assets/info.png'),warn: require('./assets/warn.png'),error: require('./assets/error.png'),success: require('./assets/success.png')}
 | ```startDelta``` | Number  | where the container starts (changes based on container height onLayout) | -100
 | ```endDelta``` | Number  | where the container ends | 0
 | ```onClose``` | Function  | Invoked when alert is closed Returns: ```data = {type, title, message, action}```  | null
