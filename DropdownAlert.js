@@ -39,6 +39,7 @@ export default class DropdownAlert extends Component {
     titleStyle: Text.propTypes.style,
     messageStyle: Text.propTypes.style,
     imageStyle: Image.propTypes.style,
+    imageSvgStyle: Image.propTypes.style,
     cancelBtnImageStyle: Image.propTypes.style,
     titleNumOfLines: PropTypes.number,
     messageNumOfLines: PropTypes.number,
@@ -107,6 +108,7 @@ export default class DropdownAlert extends Component {
       height: DEFAULT_IMAGE_DIMENSIONS,
       alignSelf: 'center',
     },
+    imageSvgStyle: {},
     cancelBtnImageStyle: {
       padding: 8,
       width: DEFAULT_IMAGE_DIMENSIONS,
@@ -442,7 +444,7 @@ export default class DropdownAlert extends Component {
             onLayout={event => this.onLayoutEvent(event)}
           >
             <View style={style}>
-              <ImageView style={StyleSheet.flatten(this.props.imageStyle)} source={source} />
+              <ImageView style={StyleSheet.flatten(this.props.imageStyle)} imageSvgStyle={StyleSheet.flatten(this.props.imageSvgStyle)} source={source} />
               <View style={StyleSheet.flatten(this.props.defaultTextContainer)}>
                 <Label style={StyleSheet.flatten(this.props.titleStyle)} numberOfLines={this.props.titleNumOfLines} text={this.state.title} />
                 <Label style={StyleSheet.flatten(this.props.messageStyle)} numberOfLines={this.props.messageNumOfLines} text={this.state.message} />
