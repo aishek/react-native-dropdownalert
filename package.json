@@ -43,6 +43,9 @@
     "react-test-renderer": "15.5.4"
   },
   "dependencies": {
-    "prop-types": "15.5.10"
+    "prop-types": "15.5.10",
+    "react-native-svg": "^5.4.2",
+    "react-native-svg-image": "^2.0.1",
+    "react-native-svg-uri": "^1.2.1"
   }
 }

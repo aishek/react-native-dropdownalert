@@ -20,7 +20,13 @@ import ImageView from './imageview';
 
 export default class DropdownAlert extends Component {
   static propTypes = {
-    imageSrc: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    imageSrc: PropTypes.shape({
+      info: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      warn: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      error: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      success: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      custom: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    }),
     cancelBtnImageSrc: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     infoColor: PropTypes.string,
     warnColor: PropTypes.string,
@@ -62,7 +68,12 @@ export default class DropdownAlert extends Component {
     endDelta: 0,
     titleNumOfLines: 1,
     messageNumOfLines: 3,
-    imageSrc: null,
+    imageSrc: {
+      info: require('./assets/info.png'),
+      warn: require('./assets/warn.png'),
+      error: require('./assets/error.png'),
+      success: require('./assets/success.png')
+    },
     cancelBtnImageSrc: require('./assets/cancel.png'),
     infoColor: '#2B73B6',
     warnColor: '#cd853f',
@@ -349,18 +360,21 @@ export default class DropdownAlert extends Component {
     }
   }
   getSourceForType(type) {
-    switch (type) {
-      case 'info':
-        return require('./assets/info.png');
-      case 'warn':
-        return require('./assets/warn.png');
-      case 'error':
-        return require('./assets/error.png');
-      case 'success':
-        return require('./assets/success.png');
-      default:
-        return this.props.imageSrc;
-    }
+    const  { imageSrc } = this.props;
+    return imageSrc[type];
+
+    // switch (type) {
+    //   case 'info':
+    //     return require('./assets/info.png');
+    //   case 'warn':
+    //     return require('./assets/warn.png');
+    //   case 'error':
+    //     return require('./assets/error.png');
+    //   case 'success':
+    //     return require('./assets/success.png');
+    //   default:
+    //     return this.props.imageSrc;
+    // }
   }
   getBackgroundColorForType(type) {
     switch (type) {
