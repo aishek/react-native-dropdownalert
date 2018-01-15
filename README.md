@@ -23,7 +23,6 @@ A simple alert to notify users about new chat messages, something went wrong or 
 ### Installation
 ```
 npm i react-native-dropdownalert --save
-react-native link react-native-svg
 ```
 
 ### Demo

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import SvgUri from 'react-native-svg-uri';
-import { View, Image } from 'react-native';
-import { DEFAULT_IMAGE_DIMENSIONS } from './constants';
+import {View, Image} from 'react-native';
+import {DEFAULT_IMAGE_DIMENSIONS} from './constants';
 
 export default class ImageView extends Component {
   static propTypes = {
     style: PropTypes.object,
-    source: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    source: PropTypes.string,
     imageProps: PropTypes.object,
   };
   static defaultProps = {
@@ -20,8 +20,9 @@ export default class ImageView extends Component {
     source: null,
     imageProps: {},
   };
+
   render() {
-    const { source, style, imageProps, svgStyle } = this.props;
+    const {source, style, imageProps, svgStyle} = this.props;
     if (source != null) {
       if (!style['width']) {
         style['width'] = DEFAULT_IMAGE_DIMENSIONS;
@@ -30,14 +31,14 @@ export default class ImageView extends Component {
         style['height'] = DEFAULT_IMAGE_DIMENSIONS;
       }
       const isSvg = typeof source === 'string';
-      if(isSvg){
+      if (isSvg) {
         return (
           <View style={style}>
-            <SvgUri style={svgStyle} svgXmlData={ source } {...imageProps}></SvgUri>
+            <SvgUri style={svgStyle} svgXmlData={source} {...imageProps}></SvgUri>
           </View>
         );
-      }else{
-        return <Image style={style} source={isRemote ? { uri: source } : source} {...imageProps} />;
+      } else {
+        return <Image style={style} source={source} {...imageProps} />;
       }
     }
     return null;
